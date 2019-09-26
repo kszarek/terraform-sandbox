@@ -18,4 +18,4 @@ jobs:
       uses: hashicorp/terraform-github-actions/fmt@v0.4.0
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        TF_ACTION_WORKING_DIR: "./terraform"
+        TF_ACTION_WORKING_DIR: "."
