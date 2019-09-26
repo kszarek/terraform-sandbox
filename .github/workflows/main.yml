@@ -1,0 +1,21 @@
+name: Terraform
+on: [pull_request]
+
+jobs:
+  on-pull-request:
+    name: On Pull Request
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout Repo
+      uses: actions/checkout@v1
+      
+    - name: Filter to PR Opened
+      uses: actions/bin/filter@master
+      with:
+        args: "action 'opened|rerequested|synchronize'"
+            
+    - name: Terraform fmt
+      uses: hashicorp/terraform-github-actions/fmt@v0.4.0
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        TF_ACTION_WORKING_DIR: "./terraform"
